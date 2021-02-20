@@ -4,7 +4,7 @@ RegiSTROM project
 
 Using the software: 
 1. Run RegiSTROM.exe
-2. Start defining jobs by clicking '+'
+2. Start defining jobs by clicking '+'.
 3. In the job defintion add the task name, the files of interest (and select the file that is going to be used as the reference for the transformation).
 4. Define the Fiduicial size (diameter), variance limit, and the mean tolerance. 
 5. Define the output folder for the corrected files and the suffix that will be added to the corrected file.
