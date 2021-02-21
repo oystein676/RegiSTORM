@@ -19,3 +19,11 @@ Under advanced settings there is the possibility to change:
 - Whether or not the identified fiducial should be deleted after the corrections (Everything within the defined radius of the identified fiduial will be removed).
 - Which frame range [start, stop] the alorithm will use when identifying the fiducials/cluster.
 
+Variables: 
+- Fidusial Size - The diameter of the fiducial / the diameter of the cluster
+- Variance Limit (Only applicable for fiducial mode) - The maximum variance in number of localizations per frame within the tolerance (2x the radius of the fiducial) before it is rejected as a fiduical.
+- Mean tolerance (Only applicable for fiducial mode) - The minium average of localizations  per frame within the tolerance (2x the radius of the fiducial) before it is rejected as a fiduical.
+- Fiducial mode/ Cluster mode - Whether the algorithm should try to identify fiducials (using the variance limit and mean tolerance) or look for cluster of localizations. 
+- Registration Tolerance - In the ICP algorithm, pairs of identified fudicials are matched through a nearest neighbor algorithm. The registration tolerance is the number of standard deviations (sigmas) greater than the mean distance the distance between a pair could be before the pair is considered an outlier. 
+- Whether the fiducials should be deleted (Only applicable for fiducial mode) - Whether or not the algorithm should delete any localizations that are within the radius of the fiducial from the coordinate of an identified fiducial. 
+- The number of frame (per channel) - For which frame range [start, stop] the algorithm should use for a channel when trying to identify the fiducials or clusters.
