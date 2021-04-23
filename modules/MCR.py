@@ -302,7 +302,7 @@ def Channel_Registration(Channels_CSV, Channel_Name, Most_Obs_Pts, Registration_
         #Deleting the fiducials + area around 
         if Fiducial_Mode == "Fiducial":    
             if ModeFid == True:
-                Channel_Transformed, Idx2Del=Delete_Fiducials(Channel_Transformed, Channel_TransformedFid, float(Fiducial_Size)/2)
+                Channel_Transformed, Idx2Del=Delete_Fiducials(Channel_Transformed, Channel_TransformedFid, float(Fiducial_Size))
 
 
         #Saving corrected files
@@ -320,6 +320,8 @@ def Channel_Registration(Channels_CSV, Channel_Name, Most_Obs_Pts, Registration_
             if ModeFid == True:
                 Channel_Transformed=Channels_CSV[Channel_Name[Goal_Idx[0]]]
                 Channel_Transformed, Idx2Del=Delete_Fiducials(Channel_Transformed, Most_Obs_Pts[Goal_Idx[0]], Fiducial_Size)
+                CH2=os.path.join(ResultPath, Channel_Name[Goal_Idx[0]][:-4] + ResultSuffix + '.csv')
+                Channel_Transformed.to_csv(''.join(CH2))
                 print('Fiducials have been deleted from the images...')
                 window1["textOutput"].Update(value='Fiducials have been deleted from the images...' + "\n", append=True)
 
