@@ -25,3 +25,7 @@ Variables:
 - Registration Tolerance - In the ICP algorithm, pairs of identified fiducials are matched through a nearest neighbor algorithm. The registration tolerance is the number of standard deviations (sigmas) greater than the mean distance the distance between a pair could be before the pair is considered an outlier. 
 - Whether the fiducials should be deleted (Only applicable for fiducial mode) - Whether or not the algorithm should delete any localizations that are within the radius of the fiducial from the coordinate of an identified fiducial. 
 - The number of frames (per channel) - For which frame range [start, stop] the algorithm should use for a channel when trying to identify the fiducials or clusters.
+
+
+# Cite this work: 
+TBA
