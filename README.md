@@ -1,5 +1,5 @@
 # RegiSTORM
-The RegiSTORM project - To learn more about the project, please read out article (Link TBA).
+The RegiSTORM project - To learn more about the project, please read our article (Link TBA).
 
 Using the software: 
 1. Run RegiSTORM.exe
