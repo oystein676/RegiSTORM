@@ -111,18 +111,7 @@ def Fiducial_Identification(channels, Fiducial_Size, Fiducial_Mode, VarLim, Mean
 
 #ICP 
 def best_fit_transform(A_BF, B_BF):
-    '''
-    Calculates the least-squares best-fit transform that maps corresponding points A to B in m spatial dimensions
-    Input:
-      A: Nxm numpy array of corresponding points
-      B: Nxm numpy array of corresponding points
-    Returns:
-      T: (m+1)x(m+1) homogeneous transformation matrix that maps A on to B
-      R: mxm rotation matrix
-      t: mx1 translation vector
-    '''
 
-    #assert A.shape == B.shape
 
     # get number of dimensions
     m = max(A_BF.shape[1], B_BF.shape[1])
@@ -158,15 +147,6 @@ def Outliers(data, m=2):
 
 
 def nearest_neighbor(src, dst):
-    '''
-    Find the nearest (Euclidean) neighbor in dst for each point in src
-    Input:
-        src: Nxm array of points
-        dst: Nxm array of points
-    Output:
-        distances: Euclidean distances of the nearest neighbor
-        indices: dst indices of the nearest neighbor
-    '''
 
     neigh = NearestNeighbors(n_neighbors=1)
     neigh.fit(dst)
@@ -175,19 +155,6 @@ def nearest_neighbor(src, dst):
 
 
 def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
-    '''
-    The Iterative Closest Point method: finds best-fit transform that maps points A on to points B
-    Input:
-        A: Nxm numpy array of source mD points
-        B: Nxm numpy array of destination mD point
-        init_pose: (m+1)x(m+1) homogeneous transformation
-        max_iterations: exit algorithm after max_iterations
-        tolerance: convergence criteria
-    Output:
-        T: final homogeneous transformation that maps A on to B
-        distances: Euclidean distances (errors) of the nearest neighbor
-        i: number of iterations to converge
-    '''
     print('Starting ICP transformation...')
     window1["textOutput"].Update(value='Starting ICP transformation...' + "\n", append=True)
     #assert A.shape == B.shape
@@ -202,9 +169,7 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
     src[:m,:(len(A))] = np.copy(A.T)
     dst[:m,:(len(B))] = np.copy(B.T)
 
-    # apply the initial pose estimation
-    #if init_pose is not None:
-     #   src = np.dot(init_pose, src)
+
 
     prev_error = 0
     distances, indices = nearest_neighbor(src[:m,:].T, dst[:m,:].T)
@@ -213,11 +178,10 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
     for i in range(max_iterations):
         distances, indices = nearest_neighbor(src[:m,:].T, dst[:m,:].T)
         Ind_Mod=indices.T
+        
         # find the nearest neighbors between the current source and destination points
         OutDist,idx_2_del=Outliers(distances, m=RegTol)
-        #print('Outlier detected: ', OutDist)
-        
-        #print('Indices Org: ', indices, ' indices to delete: ', idx_2_del)
+
         
         Ind_Modified=np.delete(Ind_Mod, idx_2_del)
         distances=np.delete(distances, idx_2_del) 
@@ -225,7 +189,6 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
         indices=Ind_Modified
         A_Idx=list(range(len(A)))
         A_Idx=np.delete(A_Idx, idx_2_del)
-        
         
         # compute the transformation between the current source and nearest destination points
         T,_,_ = best_fit_transform(src[:m,A_Idx].T, dst[:m,indices].T)
