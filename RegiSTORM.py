@@ -24,7 +24,7 @@ try:
         import multiprocessing.popen_fork as forking
 except ImportError:
     import multiprocessing.forking as forking
-d
+
 
 """
     Restrict the characters allowed in an input element to digits and . or -
