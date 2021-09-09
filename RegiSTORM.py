@@ -101,7 +101,7 @@ def edit_task(task_name=""):
         [sg.Text("Task definition (the name needs to be unique):"), sg.InputText(key="taskDefinitionText", default_text=task_name)],
         [sg.Text("Files (add at least two files, then select the reference file)")],
         [sg.Listbox(values=file_list2, enable_events=True, size=(100, 10), key="listBox2")],
-        [sg.FilesBrowse(key="fileBrowse1", enable_events=True)],
+        [sg.FilesBrowse(key="fileBrowse1", enable_events=True, file_types=(("CSV Files","*.csv"),))],
         [sg.Text("Fiducial size (nm)"), sg.Input(key="fiducialSize", default_text=fiducialSize, enable_events=True)],
         [sg.Text("Variance Limit"), sg.Input(key="varianceLimit", default_text=varianceLimit, enable_events=True)],
         [sg.Text("Mean Tolerance"), sg.Input(key="meanTol", default_text=meanTol, enable_events=True)],

@@ -1,9 +1,7 @@
 import pandas as pd
-from matplotlib import pyplot as plt
 import numpy as np
 import pathlib as pl
 import os
-import glob
 from sklearn.neighbors import NearestNeighbors
 import time
 from joblib import Parallel, delayed
@@ -122,7 +120,8 @@ def best_fit_transform(A_BF, B_BF):
       t: mx1 translation vector
     '''
 
-    #assert A.shape == B.shape
+
+
 
     # get number of dimensions
     m = max(A_BF.shape[1], B_BF.shape[1])
@@ -153,7 +152,6 @@ def Outliers(data, m=2):
     m=int(m)
     dist_out=data[abs(data-np.mean(data))>m*np.std(data)]
     idx_out=np.where(abs(data-np.mean(data))>m*np.std(data))
-    #print('Distance mean: ', np.mean(data), ' nm. {m} std: ', m*np.std(data), ' nm.')
     return dist_out, idx_out[0]
 
 
@@ -178,19 +176,18 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
     '''
     The Iterative Closest Point method: finds best-fit transform that maps points A on to points B
     Input:
-        A: Nxm numpy array of source mD points
-        B: Nxm numpy array of destination mD point
-        init_pose: (m+1)x(m+1) homogeneous transformation
+        A: Nxm numpy array of source points
+        B: Nxm numpy array of destination points
         max_iterations: exit algorithm after max_iterations
-        tolerance: convergence criteria
+        tolerance: convergence criteria for nearest neighbor distance
+        RegTol: Standard deviation away from mean distance before a nearest neighbor is an outlier
     Output:
-        T: final homogeneous transformation that maps A on to B
-        distances: Euclidean distances (errors) of the nearest neighbor
-        i: number of iterations to converge
+        T: A homogeneous transformation that maps A on to B
+        Distances: Euclidean distances of the nearest neighbor
+        i: number of iterations before convergence criteria were met
     '''
     print('Starting ICP transformation...')
     window1["textOutput"].Update(value='Starting ICP transformation...' + "\n", append=True)
-    #assert A.shape == B.shape
 
     # get number of dimensions
     m = max(A.shape[1], B.shape[1])
@@ -202,9 +199,6 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
     src[:m,:(len(A))] = np.copy(A.T)
     dst[:m,:(len(B))] = np.copy(B.T)
 
-    # apply the initial pose estimation
-    #if init_pose is not None:
-     #   src = np.dot(init_pose, src)
 
     prev_error = 0
     distances, indices = nearest_neighbor(src[:m,:].T, dst[:m,:].T)
@@ -215,9 +209,6 @@ def icp(A, B, window1, max_iterations=20, tolerance=1, RegTol=1):
         Ind_Mod=indices.T
         # find the nearest neighbors between the current source and destination points
         OutDist,idx_2_del=Outliers(distances, m=RegTol)
-        #print('Outlier detected: ', OutDist)
-        
-        #print('Indices Org: ', indices, ' indices to delete: ', idx_2_del)
         
         Ind_Modified=np.delete(Ind_Mod, idx_2_del)
         distances=np.delete(distances, idx_2_del) 
@@ -291,13 +282,6 @@ def Channel_Registration(Channels_CSV, Channel_Name, Most_Obs_Pts, Registration_
         Channel_TransformedFid['x [nm]']=A_Trans_DF['x [nm]'].values
         Channel_TransformedFid['y [nm]']=A_Trans_DF['y [nm]'].values
 
-
-        #Quantification of the difference before and after transformation + histogram
-        Corrected=Channel_Transformed[['x [nm]','y [nm]']]
-        Uncorrected_df=Channels_CSV[Channel_Name[Idx]]
-        Uncorrected=Uncorrected_df[['x [nm]','y [nm]']]
-        Goal_df=Channels_CSV[Channel_Name[Goal_Idx[0]]]
-        Goal=Goal_df[['x [nm]','y [nm]']]
 
         #Deleting the fiducials + area around 
         if Fiducial_Mode == "Fiducial":    
