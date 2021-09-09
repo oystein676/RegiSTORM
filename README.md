@@ -1,7 +1,7 @@
 # RegiSTORM
 The RegiSTORM project - To learn more about the project, please read our article (Link TBA).
 
-##Using the software: 
+## Using the software: 
 1. Run RegiSTORM.exe
 2. Start defining jobs by clicking '+'.
 3. In the job definition add the task name, the files of interest (by clicking 'browse' and selecting the .CSV-files) and select the file that is going to be used as the reference for the transformation.
@@ -27,7 +27,7 @@ Variables:
 - Whether the fiducials should be deleted (Only applicable for fiducial mode) - Whether or not the algorithm should delete any localizations that are within the radius of the fiducial from the coordinate of an identified fiducial. 
 - The number of frames (per channel) - For which frame range [start, stop] the algorithm should use for a channel when trying to identify the fiducials or clusters.
 
-##Full procedure: 
+## Full procedure: 
 1. Acquire images using STORM setup.
 2. Process data in ThunderSTORM or similar reconstruction software. 
 3. Drift correct in ThunderSTORM or likely. Chromatic correction can also increase quality of your data.
