@@ -4,14 +4,14 @@ The RegiSTORM project - To learn more about the project, please read our article
 
 ## Using the software: 
 Python needs to be installed on your computer to run the software. 
-2. Run RegiSTORM.exe
-3. Start defining jobs by clicking '+'.
-4. In the job definition add the task name, the files of interest (by clicking 'browse' and selecting the .CSV-files) and select the file that is going to be used as the reference for the transformation.
-5. Define the Fiducial size (diameter), variance limit, and the mean tolerance. 
-6. Define the output folder for the corrected files and the suffix that will be added to the corrected file.
-7. Click ‘add’ to add the defined job.
-8. Repeat for all jobs required. 
-9. Once all jobs are defined, click ‘run’ to start the registration process
+1. Run RegiSTORM.exe
+2. Start defining jobs by clicking '+'.
+3. In the job definition add the task name, the files of interest (by clicking 'browse' and selecting the .CSV-files) and select the file that is going to be used as the reference for the transformation.
+4. Define the Fiducial size (diameter), variance limit, and the mean tolerance. 
+5. Define the output folder for the corrected files and the suffix that will be added to the corrected file.
+6. Click ‘add’ to add the defined job.
+7. Repeat for all jobs required. 
+8. Once all jobs are defined, click ‘run’ to start the registration process
    (the software will freeze between each job being processed).
 
 Advanced settings: When defining a job, it is also possible to change the advanced settings. Under advanced settings there is the possibility to change:
