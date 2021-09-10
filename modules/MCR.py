@@ -42,7 +42,7 @@ def SumVar(dfF1, df, tolerance):
     duration = stop-start
     return  Var, Sum, MN, duration
 
-def ClusterDefinition(df, Sum, MN, Var, VarLim, MeanTol, Fiducial_Mode='yes'):
+def ClusterDefinition(df, Sum, MN, Var, VarLim, MeanTol, Fiducial_Mode='Fiducial'):
     if Fiducial_Mode == 'Fiducial':
         Var_Idx=[Idx for Idx, Var in enumerate(Var) if Var <= float(VarLim)]
         Mean_Idx=[Idx for Idx, Mean in enumerate(MN) if Mean>= float(MeanTol)]
