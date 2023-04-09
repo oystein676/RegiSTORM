@@ -6,13 +6,16 @@ The RegiSTORM project - To learn more about the project, please read our article
 Python needs to be installed on your computer to run the software. 
 1. Run RegiSTORM.exe
 2. Start defining jobs by clicking '+'.
+![1    2](https://user-images.githubusercontent.com/56882858/230800913-2d0dc3d9-f07f-441e-9684-47da27039526.png)
 3. In the job definition add the task name, the files of interest (by clicking 'browse' and selecting the .CSV-files) and select the file that is going to be used as the reference for the transformation.
 4. Define the Fiducial size (diameter), variance limit, and the mean tolerance. 
 5. Define the output folder for the corrected files and the suffix that will be added to the corrected file.
 6. Click ‘add’ to add the defined job.
+![3 -6](https://user-images.githubusercontent.com/56882858/230800924-fb0e0ff6-1574-4ab4-8ce0-65a542bf6ad2.png)
 7. Repeat for all jobs required. 
 8. Once all jobs are defined, click ‘run’ to start the registration process
    (the software will freeze between each job being processed).
+![8](https://user-images.githubusercontent.com/56882858/230800929-29cc1156-d4bf-4d47-b13a-bdd06402619c.png)
 
 Advanced settings: When defining a job, it is also possible to change the advanced settings. Under advanced settings there is the possibility to change:
 - Between fiducial mode (tries to identify fiducials) and cluster mode (tries to identify clusters of localizations). 
