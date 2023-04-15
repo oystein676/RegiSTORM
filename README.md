@@ -23,6 +23,8 @@ Advanced settings: When defining a job, it is also possible to change the advanc
 - The registration tolerance, sigma, which is the number of standard deviations away from the mean distance a distance between two nearest neighbors can be before they're considered an outlier. 
 - Whether or not the identified fiducial should be deleted after the corrections (Everything within the defined radius of the identified fiducial will be removed).
 - Which frame range [start, stop] the algorithm will use when identifying the fiducials/cluster.
+<img width="690" alt="Advanced settings" src="https://user-images.githubusercontent.com/56882858/232239084-f838a439-0bb2-4420-a1b3-2cc6bed289bf.png">
+
 
 Variables: 
 - Fiducial Size - The diameter of the fiducial / the diameter of the cluster
