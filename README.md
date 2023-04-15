@@ -1,6 +1,7 @@
 # RegiSTORM
 The RegiSTORM project - To learn more about the project, please read our article (Link TBA).
 
+The GUI consists of three windows. In the first window, there is an overview listing of jobs, with the possibility to add or remove jobs, clear the list, and run the list of jobs. By clicking the ‘+’ button the user is led to the second window, where the user can browse for the .csv data files and choose the folder the results will be output to. Here the user can also define the main variables: fiducial size (diameter), variance limit and mean tolerance. In this window there is also a button ‘Advanced Settings’, which leads to the third window. Under the Advanced settings the user can decide whether to use Fiducial mode or Cluster mode, the registration tolerance for outliers and the channel-specific frame range to be considered in the registration. When the user has defined the job, they can click ‘add’, which leads to the job being added to the task list in the first window. When the user has defined all the jobs, they can click ‘run’ and the software will apply the algorithm to all the jobs defined in the task list.
 
 ## Using the software: 
 Python needs to be installed on your computer to run the software. 
@@ -33,13 +34,12 @@ Variables:
 - The number of frames (per channel) - For which frame range [start, stop] the algorithm should use for a channel when trying to identify the fiducials or clusters.
 
 ## Full procedure: 
-1. Acquire images using STORM setup.
+1. Acquire images using SMLM setup.
 2. Process data in ThunderSTORM or similar reconstruction software. 
-3. Drift correct in ThunderSTORM or likely. Chromatic correction can also increase quality of your data.
+3. Drift correct each channel separately e.g. in ThunderSTORM. Chromatic correction is also recommended (e.g. with ImageJ DoM plugin).
 4. Export the localizations in .CSV format.
 5. Register the files in the RegiSTORM software.
 6. Reconstruct the corrected .CSV-files in ThunderSTORM or similar software
-7. Do post-processing in ImageJ or other software.
 
 # Cite this work: 
 TBA
