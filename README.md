@@ -44,4 +44,4 @@ Variables:
 6. Reconstruct the corrected .CSV-files in ThunderSTORM or similar software
 
 # Cite this work: 
-TBA
+Øvrebø, Ø., Ojansivu, M., Kartasalo, K. et al. RegiSTORM: channel registration for multi-color stochastic optical reconstruction microscopy. BMC Bioinformatics 24, 237 (2023). https://doi.org/10.1186/s12859-023-05320-1
